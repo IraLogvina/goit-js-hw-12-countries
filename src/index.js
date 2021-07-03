@@ -3,6 +3,8 @@ import './sass/main.scss';
 
 import debounce from 'lodash.debounce';
 
+import fetchCountries from './js/fetchCountries.js';
+
 import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/core/dist/PNotify.css';
 import { defaults, info, success, error } from '@pnotify/core';
@@ -32,17 +34,7 @@ function onSearch(event){
     fetchCountries(searchQuery)
     .then(renderCountries)
     .catch({error});
-
     }
-
-function fetchCountries(country) {
-    return fetch (`https://restcountries.eu/rest/v2/name/${country}`).then(
-        response => {
-            return response.json()
-        }
-    )
-    .catch(console.log(error))
-}
 
 // Создаем разметку при различн вариантах
 
